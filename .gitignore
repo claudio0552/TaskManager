@@ -1,0 +1,12 @@
+x64/
+.exe
+.obj
+.pdb
+.ilk
+
+.vs/
+.vcxproj.user
+.sdf
+.opensdf
+TaskManager/
+*.ini
