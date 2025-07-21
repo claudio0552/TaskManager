@@ -5,7 +5,7 @@ x64/
 .ilk
 
 .vs/
-.vcxproj.user
+*.vcxproj.user
 .sdf
 .opensdf
 TaskManager/
