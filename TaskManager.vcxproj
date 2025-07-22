@@ -186,7 +186,7 @@
     <Text Include="Source\Gui\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Source\Gui\Fonts\Inter.ttf" />
+    <Font Include="Source\Fonts\Inter.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="libs\glfw3.lib" />
