@@ -25,7 +25,7 @@ int main() {
 
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
-	ImFont* font = io.Fonts->AddFontFromFileTTF("Inter.ttf", 18.0);
+	ImFont* font = io.Fonts->AddFontFromFileTTF("Gui\\Fonts\\Inter.ttf", 18.0);
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 130");
 	ImGui::Spectrum::StyleColorsSpectrum();
