@@ -18,7 +18,6 @@ constexpr auto LENGTH = 720;
 
 int main() {
 	glfwInit();
-	glfwSwapInterval(1);
 	GLFWwindow* window = glfwCreateWindow(WIDTH, LENGTH, "Powerful Task Manager", NULL, NULL);
 
 	glfwMakeContextCurrent(window);
@@ -35,6 +34,7 @@ int main() {
 	// loop
 
 	while (!glfwWindowShouldClose(window)) {
+		glfwSwapInterval(1);
 		glfwPollEvents();
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
@@ -42,14 +42,10 @@ int main() {
 
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
-		float heightTop = height * 0.8f;
-		float heightBottom = height - heightTop;
-		ImGui::SetNextWindowSize(ImVec2(width, heightTop));
+		ImGui::SetNextWindowSize(ImVec2(width, height));
 		ImGui::SetNextWindowPos(ImVec2(0, 0));
 
 		app.render();
-		ImGui::SetNextWindowPos(ImVec2(0, heightTop));
-		ImGui::SetNextWindowSize(ImVec2(width, heightBottom));
 		ImGui::Render();
 		int display_w, display_h;
 		glfwGetFramebufferSize(window, &display_w, &display_h);
@@ -57,7 +53,7 @@ int main() {
 		glClear(GL_COLOR_BUFFER_BIT);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		glfwSwapBuffers(window);
-		std::this_thread::sleep_for(std::chrono::milliseconds(16));
+		
 
 
 	}
