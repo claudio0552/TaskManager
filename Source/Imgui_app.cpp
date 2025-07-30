@@ -12,10 +12,10 @@ ImGuiApp::ImGuiApp() {}
 
 
 
-void ImGuiApp::render() {
+void ImGuiApp::PrimaFinestra() {
 	ImGui::Begin("Gestione processi", nullptr, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoResize );
 	static bool sortByMemory = true;
-	if (ImGui::Button(sortByMemory ? "Ordine per PID ▲" : "Ordine per memoria ▲")) {
+	if (ImGui::Button(sortByMemory ? "Ordina per PID ▲" : "Ordina per memoria ▲")) {
 		sortByMemory = !sortByMemory;
 	}
 	ImGui::SameLine();
@@ -24,6 +24,7 @@ void ImGuiApp::render() {
 	static int messageFrames = 0;
 
 	if (ImGui::Button("Chiudi processo")) {
+		
 		if (selectedPName != "") {
 			if (processmanager.KillSameNameProcesses(selectedPName)) {
 				message = "Processo terminato con successo";
@@ -52,6 +53,7 @@ void ImGuiApp::render() {
 
 
 	if (ImGui::BeginTable("Processes", 3, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg)) {
+		
 		ImGui::TableSetupColumn("PID");
 		ImGui::TableSetupColumn("Nome");
 	
@@ -95,5 +97,15 @@ void ImGuiApp::render() {
 		}
 		ImGui::EndTable();
 	}
+	ImGui::Separator();
+	ImGui::End();
+}
+
+void ImGuiApp::Sbarra() {
+	ImGui::Begin("BottomBar", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
+	ImVec2 p1 = ImGui::GetCursorScreenPos();
+	ImVec2 p2 = ImVec2(p1.x + ImGui::GetContentRegionAvail().x, p1.y);
+	ImGui::GetWindowDrawList()->AddLine(p1, p2, ImGui::GetColorU32(ImGuiCol_Separator), 3.0f);
+	ImGui::Dummy(ImVec2(0.0f, 3.0f));  // Spazio per il layout
 	ImGui::End();
 }

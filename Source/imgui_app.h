@@ -9,7 +9,8 @@ inline bool compare(const Processo& a, const Processo& b) {
 class ImGuiApp {
 public:
 	ImGuiApp();
-	void render();
+	void PrimaFinestra();
+	void Sbarra();
 	
 private:
 	int selectedProcessIndex = -1;

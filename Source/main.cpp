@@ -18,6 +18,7 @@ constexpr auto LENGTH = 720;
 
 int main() {
 	glfwInit();
+	
 	GLFWwindow* window = glfwCreateWindow(WIDTH, LENGTH, "Powerful Task Manager", NULL, NULL);
 
 	glfwMakeContextCurrent(window);
@@ -42,10 +43,14 @@ int main() {
 
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
-		ImGui::SetNextWindowSize(ImVec2(width, height));
+		ImGui::SetNextWindowSize(ImVec2(width, height * 0.98f ));
 		ImGui::SetNextWindowPos(ImVec2(0, 0));
 
-		app.render();
+		app.PrimaFinestra();
+		
+		ImGui::SetNextWindowPos(ImVec2(0 , height * 0.98f));
+		ImGui::SetNextWindowSize(ImVec2(width, height - (height * 0.98f)));
+		app.Sbarra();
 		ImGui::Render();
 		int display_w, display_h;
 		glfwGetFramebufferSize(window, &display_w, &display_h);
@@ -53,7 +58,7 @@ int main() {
 		glClear(GL_COLOR_BUFFER_BIT);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		glfwSwapBuffers(window);
-		
+
 
 
 	}
