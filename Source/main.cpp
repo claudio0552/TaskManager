@@ -50,7 +50,6 @@ int main() {
 		app.render();
 		ImGui::SetNextWindowPos(ImVec2(0, heightTop));
 		ImGui::SetNextWindowSize(ImVec2(width, heightBottom));
-		app.secondWind();
 		ImGui::Render();
 		int display_w, display_h;
 		glfwGetFramebufferSize(window, &display_w, &display_h);

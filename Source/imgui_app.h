@@ -10,7 +10,6 @@ class ImGuiApp {
 public:
 	ImGuiApp();
 	void render();
-	void secondWind();
 	
 private:
 	int selectedProcessIndex = -1;

@@ -7,11 +7,22 @@
 ImGuiApp::ImGuiApp() {}
 
 
-void ImGuiApp::secondWind() {
-	ImGui::Begin("Gestisci Processi", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
-	
+
+
+
+
+
+void ImGuiApp::render() {
+	ImGui::Begin("Gestione processi", nullptr, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoResize );
+	static bool sortByMemory = true;
+	if (ImGui::Button(sortByMemory ? "Ordine per PID ▲" : "Ordine per memoria ▲")) {
+		sortByMemory = !sortByMemory;
+	}
+	ImGui::SameLine();
+
 	static std::string message = "";
 	static int messageFrames = 0;
+
 	if (ImGui::Button("Chiudi processo")) {
 		if (selectedPName != "") {
 			if (processmanager.KillSameNameProcesses(selectedPName)) {
@@ -34,19 +45,11 @@ void ImGuiApp::secondWind() {
 		messageFrames--;
 	}
 
+	ImVec2 p1 = ImGui::GetCursorScreenPos();
+	ImVec2 p2 = ImVec2(p1.x + ImGui::GetContentRegionAvail().x, p1.y);
+	ImGui::GetWindowDrawList()->AddLine(p1, p2, ImGui::GetColorU32(ImGuiCol_Separator), 3.0f);
+	ImGui::Dummy(ImVec2(0.0f, 3.0f));  // Spazio per il layout
 
-	ImGui::End();
-}
-
-
-
-
-void ImGuiApp::render() {
-	ImGui::Begin("Gestione processi", nullptr, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoResize );
-	static bool sortByMemory = true;
-	if (ImGui::Button(sortByMemory ? "Ordine per PID ▲" : "Ordine per memoria ▲")) {
-		sortByMemory = !sortByMemory;
-	}
 
 	if (ImGui::BeginTable("Processes", 3, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg)) {
 		ImGui::TableSetupColumn("PID");
