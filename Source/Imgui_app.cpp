@@ -15,7 +15,7 @@ ImGuiApp::ImGuiApp() {}
 void ImGuiApp::PrimaFinestra() {
 	ImGui::Begin("Gestione processi", nullptr, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoResize );
 	static bool sortByMemory = true;
-	if (ImGui::Button(sortByMemory ? "Ordina per PID ▲" : "Ordina per memoria ▲")) {
+	if (ImGui::Button(sortByMemory ? u8"Ordina per PID \u25B2" : "Ordina per memoria ▲")) {
 		sortByMemory = !sortByMemory;
 	}
 	ImGui::SameLine();

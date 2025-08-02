@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="Source\Gui\Fonts\Inter.ttf" />
+    <Font Include="Font\Inter.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="libs\glfw3.lib" />

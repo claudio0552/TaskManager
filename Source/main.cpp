@@ -25,7 +25,8 @@ int main() {
 
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
-	ImFont* font = io.Fonts->AddFontFromFileTTF("Font\\Inter.ttf", 18.0);
+	static const ImWchar ranges[] = { 0x0020 , 0x00FF , 0x25B2 , 0x25B2 , 0 };
+	 io.Fonts->AddFontFromFileTTF("Font\\Inter.ttf", 18.0f , nullptr , ranges);
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 130");
 	ImGui::Spectrum::StyleColorsSpectrum();
