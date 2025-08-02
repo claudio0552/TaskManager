@@ -3,7 +3,11 @@
 #include "imgui.h"
 
 inline bool compare(const Processo& a, const Processo& b) {
-	return a.memoryUsage > b.memoryUsage;
+	return a.memoryUsage < b.memoryUsage;
+}
+
+inline bool comparebyName(const Processo& a, const Processo& b) {
+	return a.name < b.name;
 }
 
 class ImGuiApp {

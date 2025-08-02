@@ -15,7 +15,7 @@ ImGuiApp::ImGuiApp() {}
 void ImGuiApp::PrimaFinestra() {
 	ImGui::Begin("Gestione processi", nullptr, ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoResize );
 	static bool sortByMemory = true;
-	if (ImGui::Button(sortByMemory ? u8"Ordina per PID \u25B2" : "Ordina per memoria ▲")) {
+	if (ImGui::Button(sortByMemory ? u8"Ordina per nome \u25B2" : "Ordina per memoria ▲")) {
 		sortByMemory = !sortByMemory;
 	}
 	ImGui::SameLine();
@@ -64,6 +64,8 @@ void ImGuiApp::PrimaFinestra() {
 
 		if (sortByMemory) {
 			std::sort(processes.begin(), processes.end(), compare);
+		} else {
+			std::sort(processes.begin(), processes.end(), comparebyName);
 		}
 
 		
